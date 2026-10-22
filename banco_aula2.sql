@@ -1,0 +1,18 @@
+CREATE DATABASE academia;
+USE academia;
+CREATE TABLE plano (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(50) NOT NULL,
+  valor_mensal DECIMAL(6,2) NOT NULL
+);
+CREATE TABLE aluno (
+  matricula INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  cpf CHAR(11) NOT NULL UNIQUE,
+  data_matricula DATE NOT NULL,
+  plano_id INT NOT NULL,
+  FOREIGN KEY (plano_id)
+  REFERENCES plano(id)
+);
+ALTER TABLE aluno ADD email VARCHAR(100);
+ALTER TABLE plano MODIFY nome VARCHAR(80) NOT NULL;
